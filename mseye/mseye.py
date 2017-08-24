@@ -1,14 +1,22 @@
 from flask import Flask
+from flask_script import Manager
+import mongoengine as me
 import requests
 from PIL import Image
 from io import BytesIO
+from eyesnap import EyeSnap
+from datetime import datetime
 import hashlib
 import binascii
 import os
 
 mseye = Flask(__name__)
+manager = Manager(mseye)
 
 DATA_DIR='/home/pmatos/Projects/ms-eye/data'
+
+me.connect('mseye')
+
 
 @mseye.route('/')
 def hello_world():
@@ -27,4 +35,7 @@ def get_current_image():
     filename = '.'.join([binascii.hexlify(checksum).decode('utf-8'), 'jpg'])
     path = os.path.join(DATA_DIR, filename)
     image.save(path)
-    return path
+
+    es = EyeSnap(datetime.now(), path)
+
+    return ''

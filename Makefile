@@ -4,5 +4,5 @@ all: requirements
 requirements: requirements.txt
 
 requirements.txt: requirements.in
-	pip-compile -o requirements.in requirements.txt
+	pip-compile -o requirements.txt requirements.in
 

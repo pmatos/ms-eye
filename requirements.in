@@ -3,3 +3,5 @@ pytest>=3.2.1
 pytest-cov>=2.5.1
 requests>=2.18.4
 pillow>=4.2
+pip-tools
+prospector[with_everything]

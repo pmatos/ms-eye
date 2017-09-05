@@ -13,7 +13,7 @@ import os
 mseye = Flask(__name__)
 manager = Manager(mseye)
 
-DATA_DIR='/home/pmatos/Projects/ms-eye/data'
+DATA_DIR=os.path.join(mseye.root_path, 'data')
 
 me.connect('mseye')
 

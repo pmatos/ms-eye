@@ -4,11 +4,11 @@
   </head>
 
   <body>
-    <img src="{{ url_for('static', 'eye.jpg') }}" />
+    <img src="{{ url_for('static', filename='eye.jpg') }}" />
     Give me sight beyond sight
 
-    <br />
-    <b>{{ url_for('data', '
-    
+    <hr />
+    <b>{{ snap.timestamp }}</b> <br/>
+    <img src="{{ url_for('send_file', filename=snap.name) }}" />    
   </body>
 <html>

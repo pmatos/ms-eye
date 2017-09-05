@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template, url_for
 from flask_script import Manager
 import mongoengine as me
 import requests
@@ -14,29 +14,38 @@ mseye = Flask(__name__)
 manager = Manager(mseye)
 
 DATA_DIR=os.path.join(mseye.root_path, 'data')
+SERVER_ADDR='192.168.178.56'
 
 me.connect('mseye')
 
 
 @mseye.route('/')
-def hello_world():
-    return 'Hello, World!'
+def showall():
+    snaps = EyeSnap.objects().order_by('timestamp')
+
+    recent = snaps[0]
+    old = snaps[1:]
+
+    return render_template('showall.html',
+                           vipsnap=recent,
+                           others=old)
 
 
 @mseye.route('/sight-beyond-sight')
 def get_current_image():
-    r = requests.get('http://192.168.178.56/jpg/image.jpg', auth=('pmatos', 'iamIr0nman'))
-    print(r.status_code)
-    print(r.encoding)
+    rep = requests.get('http://{}/jpg/image.jpg'.format(SERVER_ADDR),
+                           auth=('pmatos', 'iamIr0nman'))
+    print(rep.status_code)
+    print(rep.encoding)
 
-    stream = BytesIO(r.content)
+    stream = BytesIO(rep.content)
     image = Image.open(stream)
     checksum = hashlib.sha256(stream.getvalue()).digest()
     filename = '.'.join([binascii.hexlify(checksum).decode('utf-8'), 'jpg'])
     path = os.path.join(DATA_DIR, filename)
     image.save(path)
 
-    es = EyeSnap(datetime.now(), path)
-    es.save()
+    esnap = EyeSnap(datetime.now(), path)
+    esnap.save()
 
-    return render_template('sight.html', eyeimg=url_for('static', 'eye.jpg'), snap=es)
+    return render_template('sight.html', snap=esnap)

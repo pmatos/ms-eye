@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>
@@ -6,9 +7,17 @@
 
     <body>
       <h1>Latest Sighting</h1>
-
+      {% if qs.count() > 0 %}
+      <b>{{ qs[0].timestamp }}</b> <br/>
+      <img src="{{ url_for('send_file', filename=qs[0].name) }}" />
+      {% endif %}
       <br />
       <h1>Other sightings</h1>
-      
+      {% if qs.count() > 0 %}
+      {% for sight in qs[1:] %}
+      <h2>{{ sight.timestamp }}</h2>
+      <img src="{{ url_for('send_file', filename=sight.name) }}" />
+      {% endfor %}
+      {% endif %}
     </body>
 </html>

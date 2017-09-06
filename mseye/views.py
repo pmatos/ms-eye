@@ -18,7 +18,7 @@ me.connect('mseye')
 
 @app.route('/')
 def showall():
-    snaps_qs = EyeSnap.objects().order_by('timestamp')
+    snaps_qs = EyeSnap.objects().order_by('-timestamp')
 
     return render_template('showall.html',
                            qs=snaps_qs)

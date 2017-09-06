@@ -13,7 +13,7 @@ from flask import render_template, send_from_directory
 
 SERVER_ADDR = '192.168.178.56'
 
-me.connect('mseye')
+me.connect('mseye', host='db')
 
 
 @app.route('/')

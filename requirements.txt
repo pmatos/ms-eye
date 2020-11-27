@@ -49,7 +49,7 @@ requirements-detector==0.5.2  # via prospector
 setoptconf==0.2.0         # via prospector
 six==1.10.0               # via astroid, mongoengine, pip-tools, pydocstyle, pylint
 snowballstemmer==1.2.1    # via pydocstyle
-urllib3==1.22             # via requests
+urllib3==1.24.2           # via requests
 vulture==0.25             # via prospector
 werkzeug==1.0.1           # via flask
 wrapt==1.10.11            # via astroid

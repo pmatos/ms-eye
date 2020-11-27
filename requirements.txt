@@ -51,5 +51,5 @@ six==1.10.0               # via astroid, mongoengine, pip-tools, pydocstyle, pyl
 snowballstemmer==1.2.1    # via pydocstyle
 urllib3==1.22             # via requests
 vulture==0.25             # via prospector
-werkzeug==0.12.2          # via flask
+werkzeug==0.15.3          # via flask
 wrapt==1.10.11            # via astroid

@@ -5,17 +5,21 @@
 #    pip-compile --output-file requirements.txt requirements.in
 #
 astroid==1.5.3            # via pylint, pylint-celery, pylint-flask, pylint-plugin-utils, requirements-detector
+backports.functools-lru-cache==1.6.1  # via astroid, pylint
 certifi==2017.7.27.1      # via requests
 chardet==3.0.4            # via requests
 click==6.7                # via flask, pip-tools
+configparser==4.0.2       # via pylint
 coverage==4.4.1           # via pytest-cov
 docutils==0.14            # via pyroma
 dodgy==0.1.9              # via prospector
+enum34==1.1.10            # via astroid, pies
 first==2.0.1              # via pip-tools
 flask-script==2.0.5       # via -r requirements.in
 flask==0.12.2             # via -r requirements.in, flask-script
 frosted==1.4.1            # via prospector
 idna==2.6                 # via requests
+ipaddress==1.0.23         # via pies2overrides
 isort==4.2.15             # via pylint
 itsdangerous==0.24        # via flask
 jinja2==2.9.6             # via flask
@@ -25,6 +29,7 @@ mccabe==0.6.1             # via prospector, pylint
 mongoengine==0.13.0       # via -r requirements.in
 olefile==0.44             # via pillow
 pep8-naming==0.4.1        # via prospector
+pies2overrides==2.6.7     # via pies
 pies==2.6.7               # via frosted
 pillow==4.2.1             # via -r requirements.in
 pip-tools==1.9.0          # via -r requirements.in
@@ -43,11 +48,12 @@ pymongo==3.5.1            # via mongoengine
 pyroma==2.0.2             # via prospector
 pytest-cov==2.5.1         # via -r requirements.in
 pytest==3.2.1             # via -r requirements.in, pytest-cov
-pyyaml==3.12              # via prospector
+pyyaml==5.1               # via prospector
 requests==2.18.4          # via -r requirements.in
 requirements-detector==0.5.2  # via prospector
 setoptconf==0.2.0         # via prospector
-six==1.10.0               # via astroid, mongoengine, pip-tools, pydocstyle, pylint
+singledispatch==3.4.0.3   # via astroid, pylint
+six==1.10.0               # via astroid, mongoengine, pip-tools, pydocstyle, pylint, singledispatch
 snowballstemmer==1.2.1    # via pydocstyle
 urllib3==1.22             # via requests
 vulture==0.25             # via prospector
